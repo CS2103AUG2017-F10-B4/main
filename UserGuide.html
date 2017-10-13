@@ -32,8 +32,8 @@
 <li><a href="#listing-all-persons-code-list-code">2.3. Listing all persons : <code>list</code></a></li>
 <li><a href="#editing-a-person-code-edit-code">2.4. Editing a person : <code>edit</code></a></li>
 <li><a href="#locating-persons-by-name-code-find-code">2.5. Locating persons by name: <code>find</code></a></li>
-<li><a href="#deleting-a-person-code-delete-code">2.6. Deleting a person : <code>delete</code></a></li>
-<li><a href="#deleting-a-person-in-other-way-click-on-the-arrow">2.7. Deleting a person in other way: 'click on the arrow'</a></li>
+<li><a href="#locating-persons-by-names-or-phone-numbers-or-tags-code-finds-code">2.6. Locating persons by names or phone numbers or tags: <code>finds</code></a></li>
+<li><a href="#deleting-a-person-code-delete-code">2.7. Deleting a person : <code>delete</code></a></li>
 <li><a href="#selecting-a-person-code-select-code">2.8. Selecting a person : <code>select</code></a></li>
 <li><a href="#listing-entered-commands-code-history-code">2.9. Listing entered commands : <code>history</code></a></li>
 <li><a href="#undoing-previous-command-code-undo-code">2.10. Undoing previous command : <code>undo</code></a></li>
@@ -41,6 +41,9 @@
 <li><a href="#clearing-all-entries-code-clear-code">2.12. Clearing all entries : <code>clear</code></a></li>
 <li><a href="#exiting-the-program-code-exit-code">2.13. Exiting the program : <code>exit</code></a></li>
 <li><a href="#saving-the-data">2.14. Saving the data</a></li>
+<li><a href="#extra-code-options-code-menu-new">2.15. Extra <code>options</code> menu (NEW)</a></li>
+<li><a href="#delete-function-from-code-options-code-new">2.16. Delete function from <code>options</code>(NEW)</a></li>
+<li><a href="#coming-soon-in-v2-0">2.17. Coming soon in v2.0</a></li>
 </ul>
 </li>
 <li><a href="#faq">3. FAQ</a></li>
@@ -275,18 +278,77 @@ Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>J
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">2.6. Deleting a person : <code>delete</code></a></h3>
+<h3 id="locating-persons-by-names-or-phone-numbers-or-tags-code-finds-code"><a class="link" href="#locating-persons-by-names-or-phone-numbers-or-tags-code-finds-code">2.6. Locating persons by names or phone numbers or tags: <code>finds</code></a></h3>
 <div class="paragraph">
-<p>Deletes the specified person from the address book.<br>
-Format: <code>delete INDEX</code></p>
+<p>Finds persons who contain any of the given keywords.<br>
+Format: <code>finds n/[MORE_KEYWORDS] or p/[MORE_KEYWORDS] or t/[MORE_KEYWORDS]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The search for name is case insensitive. e.g <code>hans</code> will match <code>Hans</code></p>
+</li>
+<li>
+<p>The search for tag is case sensitive. e.g <code>friends</code> will match <code>friends</code> but not <code>Friends</code></p>
+</li>
+<li>
+<p>The order of the keywords for name does not matter. e.g. <code>Hans Bo</code> will match <code>Bo Hans</code></p>
+</li>
+<li>
+<p>The order of the keywords when searching a few tags does not matter. e.g. <code>[friends] [colleagues]</code> will match <code>[colleagues] [friends]</code></p>
+</li>
+<li>
+<p>Only can search using one type of details each time. e.g. <code>finds p/12345678</code> then <code>n/</code> and <code>t/</code> should not be included</p>
+</li>
+<li>
+<p>Only full words will be matched e.g. <code>friend</code> will not match <code>friends</code></p>
+</li>
+<li>
+<p>Persons matching at least one keyword will be returned (i.e. <code>OR</code> search). e.g. <code>Hans Bo</code> will return <code>Hans Gruber</code>, <code>Bo Yang</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>finds n/John</code><br>
+Returns <code>john</code> and <code>John Doe</code></p>
+</li>
+<li>
+<p><code>finds n/Betsy Tim John</code><br>
+Returns any person having names <code>Betsy</code>, <code>Tim</code>, or <code>John</code></p>
+</li>
+<li>
+<p><code>finds p/91234567</code><br>
+Returns any person having phone number <code>91234567</code> exactly</p>
+</li>
+<li>
+<p><code>finds p/91234567 12345678</code><br>
+Returns any person having phone number <code>91234567</code> or <code>12345678</code> exactly</p>
+</li>
+<li>
+<p><code>finds t/[friends]</code><br>
+Returns any person having tag <code>[friends]</code> exactly</p>
+</li>
+<li>
+<p><code>finds t/[friends] [colleagues]</code><br>
+Returns any person having tags <code>[friends]</code> or <code>[colleagues]</code> exactly</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-person-in-other-way-click-on-the-arrow"><a class="link" href="#deleting-a-person-in-other-way-click-on-the-arrow">2.7. Deleting a person in other way: 'click on the arrow'</a></h3>
+<h3 id="deleting-a-person-code-delete-code"><a class="link" href="#deleting-a-person-code-delete-code">2.7. Deleting a person : <code>delete</code></a></h3>
 <div class="paragraph">
 <p>Deletes the specified person from the address book.<br>
-Delete the person by clicking arrow beside of username
-select "Deletes" to remove person from the list</p>
+Format: <code>delete INDEX</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -483,6 +545,30 @@ Format: <code>exit</code></p>
 There is no need to save manually.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="extra-code-options-code-menu-new"><a class="link" href="#extra-code-options-code-menu-new">2.15. Extra <code>options</code> menu (NEW)</a></h3>
+<div class="paragraph">
+<p>Each user will have an extra list of options to choose from beside their name.<br>
+Icon is similar to a down arrow.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="delete-function-from-code-options-code-new"><a class="link" href="#delete-function-from-code-options-code-new">2.16. Delete function from <code>options</code>(NEW)</a></h3>
+<div class="paragraph">
+<p>Deletes the specified person from the address book.<br>
+Function can be found from the new <code>options</code> feature.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="coming-soon-in-v2-0"><a class="link" href="#coming-soon-in-v2-0">2.17. Coming soon in v2.0</a></h3>
+<div class="sect3">
+<h4 id="googlemap-function-from-code-options-code"><a class="link" href="#googlemap-function-from-code-options-code">2.17.1. GoogleMap function from <code>options</code></a></h4>
+<div class="paragraph">
+<p>Show google maps data based on person&#8217;s address.<br>
+Function will be found from the new <code>options</code> feature.</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -544,7 +630,7 @@ e.g.<code>select 2</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-10-13 03:06:14 +00:00
+Last updated 2017-10-13 07:38:12 +00:00
 </div>
 </div>
 </body>
