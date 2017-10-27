@@ -180,7 +180,7 @@ Examples:
 `list` +
 `undo` (reverses the `delete 1` command) +
 
-* `select 1` +
+* `select 1 ` +
 `list` +
 `undo` +
 The `undo` command fails as there are no undoable commands executed previously.
