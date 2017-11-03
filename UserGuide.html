@@ -799,6 +799,50 @@ All other details that are not provided will be filled in by default values as s
 <p><em>Figure 3.5.1.1 : Default values for empty fields</em></p>
 </div>
 </div>
+<div class="sect3">
+<h4 id="import-xml-addressbook-command"><a class="link" href="#import-xml-addressbook-command">3.5.2. Import XML addressbook command</a></h4>
+<div class="paragraph">
+<p>External addressbook can now be imported using <code>import</code> command</p>
+</div>
+<div class="paragraph">
+<p>Appends current addreessbook persons with given URL.<br>
+Format: <code>import [ABSOULTE_PATH]</code><br>
+Format: <code>import [RELATIVE_PATH]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Loads the XML addressbook file from given path.</p>
+</li>
+<li>
+<p>If person name from new addressbook does not exist, add into local addressbook.</p>
+</li>
+<li>
+<p>If person name from new addressbook already exist, update into local addressbook.</p>
+</li>
+<li>
+<p>The XML file from given path <strong>must exist</strong>.</p>
+</li>
+<li>
+<p>The XML file from given path must be <strong>well-formed</strong>.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="paragraph">
+<p><code>import C:\Users\Choony\newAddressbook.xml</code><br>
+Add new persons from newAddressBook into local addressbook.<br>
+<code>import data\addressbok2.xml</code><br>
+Add new persons from addressbook2 from local project<br>
+folder <strong>data</strong> into local addressbook.</p>
+</div>
+</div>
 </div>
 <div class="sect2">
 <h3 id="coming-soon-in-code-v2-0-code"><a class="link" href="#coming-soon-in-code-v2-0-code">3.6. Coming soon in <code>v2.0</code></a></h3>
@@ -907,7 +951,7 @@ e.g. <code>remark 1 r/CS2103 is fun</code></p>
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2017-11-02 18:10:10 +00:00
+Last updated 2017-11-03 03:28:42 +00:00
 </div>
 </div>
 </body>
