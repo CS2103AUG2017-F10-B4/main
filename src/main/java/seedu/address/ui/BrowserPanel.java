@@ -46,17 +46,16 @@ public class BrowserPanel extends UiPart<Region> {
 
     private void loadPersonPage(ReadOnlyPerson person) {
         loadPage(GOOGLE_SEARCH_URL_PREFIX + person.getName().fullName.replaceAll(" ", "+")
-            + GOOGLE_SEARCH_URL_SUFFIX);
+                + GOOGLE_SEARCH_URL_SUFFIX);
     }
 
-    //@@author Choony93
-
-    /**
-     * @param person Loads a Google Map page based on index of {@param person}
-     */
     private void loadMapPage(ReadOnlyPerson person) {
         loadPage(GOOGLE_GMAP_URL_PREFIX + person.getAddress().value
-            .replaceAll(" ", "+").replaceAll(",", ""));
+                .replaceAll(" ", "+").replaceAll(",", ""));
+    }
+
+    public void loadPage(String url) {
+        Platform.runLater(() -> browser.getEngine().load(url));
     }
 
     /**
@@ -65,11 +64,6 @@ public class BrowserPanel extends UiPart<Region> {
     public void loadDefaultPage(String theme) {
         URL defaultPage = MainApp.class.getResource(FXML_FILE_FOLDER + DEFAULT_PAGE);
         loadPage(defaultPage.toExternalForm() + "?theme=" + theme);
-    }
-    //@@author
-
-    public void loadPage(String url) {
-        Platform.runLater(() -> browser.getEngine().load(url));
     }
 
     /**
@@ -85,11 +79,9 @@ public class BrowserPanel extends UiPart<Region> {
         loadPersonPage(event.getNewSelection().person);
     }
 
-    //@@author Choony93
     @Subscribe
-    private void handleDisplayGmapEvent(DisplayGmapEvent event) {
+    private void handlePersonPanelGmapEvent(DisplayGmapEvent event) {
         logger.info(LogsCenter.getEventHandlingLogMessage(event));
         loadMapPage(personList.get(event.targetIndex));
     }
-    //@@author
 }

@@ -3,11 +3,10 @@ package seedu.address.commons.events.model;
 import seedu.address.commons.events.BaseEvent;
 import seedu.address.model.ReadOnlyAddressBook;
 
-//@@author Choony93
-
 /**
  * Indicates the AddressBook calling for import
  */
+//@@author Choony93
 public class AddressBookImportEvent extends BaseEvent {
 
     public final String filePath;
@@ -23,4 +22,3 @@ public class AddressBookImportEvent extends BaseEvent {
         return "New Addressbook imported from file: " + filePath;
     }
 }
-//@@author
