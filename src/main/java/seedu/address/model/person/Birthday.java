@@ -30,11 +30,9 @@ public class Birthday {
         String trimmedBirthday = (birthday != null) ? birthday : "01/01/1991";
 
         if (isValidBirthday(trimmedBirthday) && !birthday.equals("No birthday")) {
-            String yes2 = trimmedBirthday.replaceAll("[/]", "");
-
-            isValidBirthdayValue(yes2);
-
-            if (yes2.equals(NO_BIRTHDAY_DEFAULT)) {
+            String birthdayNew = trimmedBirthday.replaceAll("[/]", "");
+            isValidBirthdayValue(birthdayNew);
+            if (birthdayNew.equals(NO_BIRTHDAY_DEFAULT)) {
                 this.value = "No birthday";
             } else {
                 this.value = trimmedBirthday;
